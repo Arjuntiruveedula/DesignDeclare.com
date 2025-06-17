@@ -143,26 +143,26 @@ const AnimatedCount: React.FC<AnimatedCountProps> = ({ target }) => {
 
   useEffect(() => {
     if (isInView) {
-      controls.start({
-        count: target,
-        transition: { duration: 2, ease: 'easeOut' },
-      });
-    }
-  }, [isInView, target, controls]);
+      let start = 0;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const current = Math.floor(start + (target - start) * progress);
+        setCount(current);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+    };
+    requestAnimationFrame(animate);
+  }
+  }, [isInView, target]);
 
   return (
-    <motion.span
-      ref={ref}
-      animate={controls}
-      initial={{ count: 500 }}
-      onUpdate={(latest) => {
-        if (latest.count !== undefined) {
-          setCount(Math.round(latest.count));
-        }
-      }}
-    >
-      {count}
-    </motion.span>
+        <span ref={ref}>{count}</span>
+
   );
 };
 
