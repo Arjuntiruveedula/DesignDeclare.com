@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {motion,useAnimation,useInView} from 'framer-motion';
+import {motion,useInView} from 'framer-motion';
 import { useRef } from 'react';
 
 interface Signatory {
