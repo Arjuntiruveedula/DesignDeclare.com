@@ -137,7 +137,7 @@ const globalSupporters: CountrySection[] = [
 
 const AnimatedCount: React.FC<AnimatedCountProps> = ({ target }) => {
   const [count, setCount] = useState(500);
-  const controls = useAnimation();
+  // const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
