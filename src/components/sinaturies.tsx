@@ -6,6 +6,10 @@ interface Signatory {
   name: string;
   url: string;
 }
+interface AnimatedCountProps {
+  target: number;
+}
+
 
 interface CountrySection {
   country: string;
